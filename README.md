@@ -15,22 +15,43 @@ To write a program to prepare EMI calculator using function without return type 
 
 ## PROGRAM
 ```
-#include<stdio.h>
-#include<math.h>
-int main()
-{
-    float p = 775000, R = 8.75, y = 10.6 * 12, emi, r, c;
-    r = R/(12*100);
-    c = pow((1+r),y);
-    emi = (p*c*r)/(c-1);
-    printf("Monthly EMI is= %.3f",emi);
+#include <stdio.h>
+#include <math.h>
+
+void calculateEMI(float principal, float rate, int time) {
+    float r = rate / (12 * 100); 
+    int t = time;              
+
+    float emi = (principal * r * pow(1 + r, t)) / (pow(1 + r, t) - 1);
+
+    printf("EMI for the loan is: %.2f\n", emi);
+}
+
+int main() {
+    float principal, rate;
+    int months;
+
+  
+    printf("Enter the principal amount: ");
+    scanf("%f", &principal);
+
+    printf("Enter the annual interest rate (in %%): ");
+    scanf("%f", &rate);
+
+    printf("Enter the loan tenure (in months): ");
+    scanf("%d", &months);
+
+
+    calculateEMI(principal, rate, months);
+
     return 0;
 }
+
 ```
 
 
 ## OUTPUT
-![Screenshot 2025-04-27 210738](https://github.com/user-attachments/assets/2fe12be6-a624-4573-8dfd-3a5286cb99b7)
+![image](https://github.com/user-attachments/assets/010cae43-30e5-44c8-abc4-4a3bef0442f2)
 
 
 
